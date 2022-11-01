@@ -1,6 +1,10 @@
 ﻿using DailyWeatherData.Classes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace DailyWeatherData
@@ -10,7 +14,7 @@ namespace DailyWeatherData
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<DailyWeather> dailyWeathers = new();
+        List<DailyWeather>? dailyWeathers = new();
         public MainWindow()
         {
             InitializeComponent();
@@ -77,5 +81,33 @@ namespace DailyWeatherData
             weatherList.ItemsSource = null;
             weatherList.ItemsSource = dailyWeathers;
         }
+
+        private async void saveDatabtn_Click(object sender, RoutedEventArgs e)
+        {
+            await SerializeList();
+        }
+        private async void loadDatabtn_Click(object sender, RoutedEventArgs e)
+        {
+            await DeserializeList();
+            DisplayContent();
+        }
+
+        private async Task DeserializeList()
+        {
+            using (FileStream fileStream = File.OpenRead("weatherdata.json"))
+            {
+                dailyWeathers = await JsonSerializer.DeserializeAsync<List<DailyWeather>>(fileStream);
+            }
+        }
+
+        private async Task SerializeList()
+        {
+            using (FileStream fileStream = File.Create("weatherdata.json"))
+            {
+                await JsonSerializer.SerializeAsync(fileStream, dailyWeathers);
+                await fileStream.DisposeAsync();
+            }
+        }
+
     }
 }
