@@ -64,7 +64,6 @@ namespace DailyWeatherData
                 DisplayContent();
             }
         }
-
         private void ClearContent()
         {
             windspeedTextBox.Clear();
