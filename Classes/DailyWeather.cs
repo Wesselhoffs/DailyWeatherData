@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DailyWeatherData.Classes
 {
@@ -14,10 +9,6 @@ namespace DailyWeatherData.Classes
         public bool Sunny { get; set; }
         public double Windspeed { get; set; }
         public double Degrees { get; set; }
-
-        public DailyWeather()
-        {
-        }
 
         public DailyWeather(bool sunny, double windspeed, double degrees, DateTime date)
         {
