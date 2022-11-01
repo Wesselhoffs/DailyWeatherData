@@ -54,6 +54,10 @@ namespace DailyWeatherData
             if (windspeedTextBox.Text != null)
             {
                 windParsed = double.TryParse(windspeedTextBox.Text, out windSpeed);
+                if (!windParsed)
+                {
+                    MessageBox.Show("Du har inte angett en giltid vindhastighet\nEndast siffror och kommatecken", "Fel vindhastighet");
+                }
             }
             else
             {
@@ -63,7 +67,7 @@ namespace DailyWeatherData
             {
                 DailyWeather weather = new DailyWeather(sunnyOrNot, windSpeed, degrees);
                 dailyWeathers.Add(weather);
-                MessageBox.Show("Dagen tillagd!");
+                MessageBox.Show("Dagen tillagd!", "Grattis!");
                 ClearContent();
                 DisplayContent();
             }
