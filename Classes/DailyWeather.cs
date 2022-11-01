@@ -19,12 +19,12 @@ namespace DailyWeatherData.Classes
         {
         }
 
-        public DailyWeather(bool sunny, double windspeed, double degrees)
+        public DailyWeather(bool sunny, double windspeed, double degrees, DateTime date)
         {
             Sunny = sunny;
             Windspeed = windspeed;
             Degrees = degrees;
-            Date = DateTime.Now;
+            Date = date;
 
             if (sunny)
             {

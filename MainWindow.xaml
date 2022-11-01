@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DailyWeatherData"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -20,6 +20,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Dagens Väder" HorizontalContentAlignment="Center" FontSize="25"/>
         <StackPanel Grid.Row="1" Grid.RowSpan="3" Margin="20">
+            <DatePicker x:Name="datePicker" Margin="10"/>
             <StackPanel Orientation="Horizontal">
                 <RadioButton x:Name="sunnyRadiobtn" Content="Soligt" GroupName="sunnyOrNot" Margin="30,0,0,0"/>
                 <RadioButton x:Name="notSunnyRadiobtn" Content="Inte Soligt" GroupName="sunnyOrNot" Margin="30,0,0,0"/>

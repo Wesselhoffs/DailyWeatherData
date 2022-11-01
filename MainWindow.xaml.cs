@@ -65,11 +65,20 @@ namespace DailyWeatherData
             }
             if (windParsed && degreesParsed && ((bool)sunnyRadiobtn.IsChecked || (bool)notSunnyRadiobtn.IsChecked))
             {
-                DailyWeather weather = new DailyWeather(sunnyOrNot, windSpeed, degrees);
-                dailyWeathers.Add(weather);
-                MessageBox.Show("Dagen tillagd!", "Grattis!");
-                ClearContent();
-                DisplayContent();
+                DateTime? date = datePicker.SelectedDate;
+                if (date != null)
+                {
+                    DailyWeather weather = new DailyWeather(sunnyOrNot, windSpeed, degrees, (DateTime)date);
+                    dailyWeathers.Add(weather);
+                    MessageBox.Show("Dagen tillagd!", "Grattis!");
+                    ClearContent();
+                    DisplayContent();
+                }
+                else
+                {
+                    MessageBox.Show("Du måste ange ett datum", "Ange Datum!!!!");
+                    return;
+                }
             }
         }
         private void ClearContent()
