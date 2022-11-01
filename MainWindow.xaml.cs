@@ -85,6 +85,7 @@ namespace DailyWeatherData
         private async void saveDatabtn_Click(object sender, RoutedEventArgs e)
         {
             await SerializeList();
+            weatherList.ItemsSource = null;
         }
         private async void loadDatabtn_Click(object sender, RoutedEventArgs e)
         {
